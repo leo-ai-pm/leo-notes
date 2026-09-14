@@ -23,7 +23,7 @@ export default function Home() {
       </header>
       <main className="wrap" id="main">
         <div className="directory" aria-label="内容导航">
-          <a href="#writing" className="directory-card"><PenLine/><div><h2>文字与思考</h2><p>文章发布在公众号</p></div><ArrowRight className="card-arrow" size={17}/></a>
+          <a href="#writing" className="directory-card"><PenLine/><div><h2>文字与思考</h2><p>{articles.length} 篇文章 · 公众号原文</p></div><ArrowRight className="card-arrow" size={17}/></a>
           <a href="#interests" className="directory-card"><Compass/><div><h2>关注方向</h2><p>AI 产品、实践、阅读</p></div><ArrowRight className="card-arrow" size={17}/></a>
           <a href="#about" className="directory-card"><BookOpen/><div><h2>关于我</h2><p>认识一下，Leo</p></div><ArrowRight className="card-arrow" size={17}/></a>
         </div>
@@ -58,7 +58,7 @@ export default function Home() {
           </div>
           <aside className="sidebar">
             <section id="about" className="about-box" aria-labelledby="about-heading">
-              <div className="monogram" aria-hidden="true">L<span>.</span></div>
+              <div className="profile-avatar"><img src={profile.avatar} width={5472} height={3648} alt="Leo 的头像" /></div>
               <h2 id="about-heading">你好，我是 Leo</h2>
               <p>一名 AI 产品学习者，<br/>也在不断动手实践。</p>
               <p>关注产品、技术与人的连接。用写作整理思路，用实践回答问题。</p>
@@ -67,7 +67,7 @@ export default function Home() {
             <section id="wechat" className="wechat-widget" aria-labelledby="wechat-heading">
               <h2 id="wechat-heading">在公众号继续聊 <ArrowUpRight size={16}/></h2>
               <a href={profile.wechatUrl} target="_blank" rel="noopener noreferrer" aria-label="打开 Leo 的公众号扫码入口"><img className="qr-image" src={profile.qrImage} width={430} height={430} alt="Leo 提供的微信公众号二维码，请用微信扫一扫"/></a>
-              <p>微信扫一扫，阅读我的文章</p>
+              <p>{profile.wechatName} · 微信扫一扫</p>
               <a className="wechat-button" href={profile.wechatUrl} target="_blank" rel="noopener noreferrer">打开公众号 <ArrowUpRight size={15}/></a>
               <a className="save-qr" href={profile.qrImage} download="Leo-公众号二维码.jpg">保存二维码</a>
             </section>
