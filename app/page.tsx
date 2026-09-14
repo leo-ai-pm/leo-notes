@@ -1,4 +1,5 @@
 import { ArrowUpRight, ArrowRight, BookOpen, Compass, PenLine } from 'lucide-react';
+import { ArticleLink } from '@/components/article-link';
 import { articles, articleDestination, profile } from '@/lib/content';
 
 const directions = [
@@ -17,7 +18,7 @@ export default function Home() {
             <a href="#top" className="active">首页</a>
             <a href="#writing">文章</a>
             <a href="#about">关于</a>
-            <a href={profile.wechatUrl} target="_blank" rel="noopener noreferrer" className="nav-wechat">公众号 <ArrowUpRight size={14}/></a>
+            <a href={profile.githubUrl} target="_blank" rel="noopener noreferrer" className="nav-wechat">GitHub <ArrowUpRight size={14}/></a>
           </nav>
         </div>
       </header>
@@ -30,13 +31,13 @@ export default function Home() {
         <div className="columns">
           <div className="feed">
             <section id="writing" aria-labelledby="writing-heading">
-              <div className="section-head"><h1 id="writing-heading">文字与思考</h1><a href={profile.wechatUrl} target="_blank" rel="noopener noreferrer">去公众号 <ArrowUpRight size={14}/></a></div>
+              <div className="section-head"><h1 id="writing-heading">文字与思考</h1><span className="article-count">{articles.length} 篇文章</span></div>
               {articles.length > 0 ? articles.map((article) => (
                 <article className="entry" key={article.title}>
-                  <a className="article-link" href={articleDestination(article)} target="_blank" rel="noopener noreferrer">
+                  <ArticleLink articleId={article.id} href={articleDestination(article)}>
                     <div className="entry-meta">{article.date && <time dateTime={article.date}>{article.date}</time>}<span>{article.category}</span></div>
                     <h2>{article.title}</h2><p>{article.excerpt}</p><span className="text-link">去公众号阅读 <ArrowUpRight size={16}/></span>
-                  </a>
+                  </ArticleLink>
                 </article>
               )) : (
                 <article className="entry featured-entry">
@@ -62,19 +63,20 @@ export default function Home() {
               <h2 id="about-heading">你好，我是 Leo</h2>
               <p>一名 AI 产品学习者，<br/>也在不断动手实践。</p>
               <p>关注产品、技术与人的连接。用写作整理思路，用实践回答问题。</p>
-              <div className="about-signature">保持好奇，继续行动。<span>↗</span></div>
+              <a className="about-signature" href={profile.githubUrl} target="_blank" rel="noopener noreferrer">GitHub · leo-ai-pm <ArrowUpRight size={15}/></a>
             </section>
             <section id="wechat" className="wechat-widget" aria-labelledby="wechat-heading">
-              <h2 id="wechat-heading">在公众号继续聊 <ArrowUpRight size={16}/></h2>
-              <a href={profile.wechatUrl} target="_blank" rel="noopener noreferrer" aria-label="打开 Leo 的公众号扫码入口"><img className="qr-image" src={profile.qrImage} width={430} height={430} alt="Leo 提供的微信公众号二维码，请用微信扫一扫"/></a>
-              <p>{profile.wechatName} · 微信扫一扫</p>
-              <a className="wechat-button" href={profile.wechatUrl} target="_blank" rel="noopener noreferrer">打开公众号 <ArrowUpRight size={15}/></a>
-              <a className="save-qr" href={profile.qrImage} download="Leo-公众号二维码.jpg">保存二维码</a>
+              <h2 id="wechat-heading">微信</h2>
+              <div className="wechat-box">
+                <img className="qr-image" src={profile.qrImage} width={430} height={430} alt="Leo-AIpm 公众号二维码，请用微信扫一扫"/>
+                <p>扫码关注公众号</p>
+                <div className="personal-wechat">个人微信：<span>dpy093</span></div>
+              </div>
             </section>
           </aside>
         </div>
       </main>
-      <footer className="site-footer"><div className="wrap footer-row"><p>© {new Date().getFullYear()} Leo<span>思考与实践</span></p><a href="#top">回到顶部 ↑</a></div></footer>
+      <footer className="site-footer"><div className="wrap footer-row"><p>© {new Date().getFullYear()} Leo<span>思考与实践</span></p><div className="footer-links"><a href="/admin">管理后台</a><a href="#top">回到顶部 ↑</a></div></div></footer>
     </>
   );
 }

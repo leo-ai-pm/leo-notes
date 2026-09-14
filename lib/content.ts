@@ -1,6 +1,7 @@
 /** Add only real published articles. Every article opens WeChat, never a local detail page. */
 export const profile = {
   name: 'Leo',
+  githubUrl: 'https://github.com/leo-ai-pm',
   tagline: '思考与实践',
   description: '记录 AI 产品学习、项目实践与日常思考。',
   wechatUrl: 'https://weixin.qq.com/r/mp/qSfJ0YnEN9RIrc2y93K7',
@@ -9,6 +10,7 @@ export const profile = {
   wechatName: 'Leo-AIpm',
 };
 export type Article = {
+  id: string;
   title: string;
   excerpt: string;
   category: string;
@@ -22,6 +24,7 @@ export const articles: Article[] = [
     "excerpt": "从宠物交友的想法，到可以体验的「碰爪」Demo。记录需求补充、地图接入与测试修复，也写下真实多人使用前还要完成的工作。",
     "category": "项目实践",
     "date": "2026-09-06",
+    "id": "J0BMxUEtUeHUQix-LyCZyg",
     "wechatUrl": "https://mp.weixin.qq.com/s/J0BMxUEtUeHUQix-LyCZyg"
   },
   {
@@ -29,6 +32,7 @@ export const articles: Article[] = [
     "excerpt": "围绕一份 81 页的架构与扩展白皮书，梳理 DeepSeek Harness 的插件体系、请求流程与扩展方式，以及采用时需要考虑的边界。",
     "category": "Agent 架构",
     "date": "2026-09-02",
+    "id": "KaExO8TAWRiLWjL0yzyiYA",
     "wechatUrl": "https://mp.weixin.qq.com/s/KaExO8TAWRiLWjL0yzyiYA"
   },
   {
@@ -36,6 +40,7 @@ export const articles: Article[] = [
     "excerpt": "从回乡时听不懂的方言、难以接续的聊天谈起，思考 AI 能否帮助离乡的人重新理解亲人、地方习俗与共同生活。",
     "category": "故乡与 AI",
     "date": "2026-08-30",
+    "id": "qRWh7RpGpbo8DcHqfuxBPA",
     "wechatUrl": "https://mp.weixin.qq.com/s/qRWh7RpGpbo8DcHqfuxBPA"
   },
   {
@@ -43,6 +48,7 @@ export const articles: Article[] = [
     "excerpt": "从一场校招解约事件切入，讨论 AI 在求职信息整理、文件理解和咨询准备中的作用，以及产品需要守住的边界。",
     "category": "AI 与就业",
     "date": "2026-08-29",
+    "id": "OTvoAD6c3mNGW0dUIJkpRg",
     "wechatUrl": "https://mp.weixin.qq.com/s/OTvoAD6c3mNGW0dUIJkpRg"
   },
   {
@@ -50,6 +56,7 @@ export const articles: Article[] = [
     "excerpt": "从一则引发讨论的 AI 使用叙事出发，思考 AI 作为决策伙伴时的价值、迎合问题，以及人应当保留的判断与责任。",
     "category": "AI 与决策",
     "date": "2026-08-29",
+    "id": "SIc1ULDG_mtPSqEq5Hv8OA",
     "wechatUrl": "https://mp.weixin.qq.com/s/SIc1ULDG_mtPSqEq5Hv8OA"
   }
 ];

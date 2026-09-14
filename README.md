@@ -13,3 +13,16 @@
 ## 本地开发
 
 `npm install` 后运行 `npm run dev`；`npm run build` 生成部署产物。
+
+
+## 管理后台与统计
+
+- 首页 `/` 面向匿名访客公开，文章继续直接打开微信原文。
+- 后台 `/admin` 使用 Sites 的 ChatGPT 登录。服务端将认证邮箱与平台秘密变量 `OWNER_EMAIL` 比较；缺少配置时拒绝授权。后台接口 `/api/admin/stats` 对匿名请求返回 401，对其他账号返回 403，响应禁止缓存。
+- 平台必须剥离访客自行提供的 `oai-authenticated-user-*` 请求头，仅转发经过平台认证的身份。这是 Sites 认证 helper 的信任边界；不要把此 Worker 绕过 Sites 直接暴露。
+- 点击通过匿名 POST `/api/analytics/click` 保存到 D1。事件编号只用于同一次点击的重试去重，不标识访客。统计含重复点击与所有者自身点击，不等于独立访客或公众号阅读量；浏览器阻止脚本/网络时可能漏计。
+- 不存储访客 IP、姓名、微信号、设备指纹。只记录文章编号、点击时间、北京时间日期和一次性的随机事件编号。
+- 表结构由 `db/schema.ts` 定义，`npx drizzle-kit generate` 生成迁移；生产迁移由 Sites 在发布时应用，禁止运行时创建表。
+- 本地调试用忽略文件 `.dev.vars`，内容为 `OWNER_EMAIL="seedy@sites.test"`。该模拟邮箱仅用于本地，生产必须在 Sites 设置真实所有者邮箱；代码没有本地用户授权后门。
+- 本地行为检查：`node scripts/test-analytics.mjs http://localhost:3001`，只允许本地 URL；会在本地 D1 中增加一个测试点击，永不写生产数据库。
+- 文章、头像与布局仍在代码中维护；后台仅提供点击统计与统计口径说明。
