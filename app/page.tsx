@@ -7,13 +7,13 @@ const directions = [
   {number:'02', title:'项目实践', text:'在动手的过程中，检验想法，积累经验。'},
   {number:'03', title:'阅读与思考', text:'给新问题留一点空间，也给自己留一点记录。'},
 ];
-export function PersonalSite({ adminUrl = '/admin', analyticsEndpoint = '/api/analytics/click' }: {adminUrl?: string; analyticsEndpoint?: string} = {}) {
+export function PersonalSite({ adminUrl = '/admin', analyticsEndpoint = '/api/analytics/click', basePath = '/' }: {adminUrl?: string; analyticsEndpoint?: string; basePath?: string} = {}) {
   return (
     <>
       <a href="#main" className="skip-link">跳到正文</a>
       <header className="site-header" id="top">
         <div className="wrap header-row">
-          <a className="brand" href="/" aria-label="Leo 首页">{profile.name}<span className="brand-dot">.</span><span className="tagline">{profile.tagline}</span></a>
+          <a className="brand" href={basePath} aria-label="Leo 首页">{profile.name}<span className="brand-dot">.</span><span className="tagline">{profile.tagline}</span></a>
           <nav aria-label="主导航">
             <a href="#top" className="active">首页</a>
             <a href="#writing">文章</a>
@@ -59,7 +59,7 @@ export function PersonalSite({ adminUrl = '/admin', analyticsEndpoint = '/api/an
           </div>
           <aside className="sidebar">
             <section id="about" className="about-box" aria-labelledby="about-heading">
-              <div className="profile-avatar"><img src={profile.avatar} width={5472} height={3648} alt="Leo 的头像" /></div>
+              <div className="profile-avatar"><img src={basePath + profile.avatar.slice(1)} width={5472} height={3648} alt="Leo 的头像" /></div>
               <h2 id="about-heading">你好，我是 Leo</h2>
               <p>一名 AI 产品学习者，<br/>也在不断动手实践。</p>
               <p>关注产品、技术与人的连接。用写作整理思路，用实践回答问题。</p>
@@ -68,7 +68,7 @@ export function PersonalSite({ adminUrl = '/admin', analyticsEndpoint = '/api/an
             <section id="wechat" className="wechat-widget" aria-labelledby="wechat-heading">
               <h2 id="wechat-heading">微信</h2>
               <div className="wechat-box">
-                <img className="qr-image" src={profile.qrImage} width={430} height={430} alt="Leo-AIpm 公众号二维码，请用微信扫一扫"/>
+                <img className="qr-image" src={basePath + profile.qrImage.slice(1)} width={430} height={430} alt="Leo-AIpm 公众号二维码，请用微信扫一扫"/>
                 <p>扫码关注公众号</p>
                 <div className="personal-wechat">个人微信：<span>dpy093</span></div>
               </div>

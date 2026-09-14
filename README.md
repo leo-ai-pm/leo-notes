@@ -16,7 +16,7 @@
 
 ## GitHub Pages
 
-- 仓库目标为 `leo-ai-pm/leo-ai-pm.github.io`，网站地址为 `https://leo-ai-pm.github.io/`。
+- 个人网站仓库为 `leo-ai-pm/leo-notes`，网站地址为 `https://leo-ai-pm.github.io/leo-notes/`。根域名保留给已有 AI 日报。
 - `npm run build:pages` 输出到 `dist-pages/`；HTML 已预渲染，禁用 JavaScript 也能阅读首页并打开原文，脚本只增强点击统计。
 - `github-pages/` 复用现有首页、图片和样式；`vite.pages.config.ts` 是独立静态构建配置。GitHub Actions 在 `main` 更新后构建并发布 Pages。
 - 仓库 Settings → Pages 的 Source 设为 GitHub Actions；不需要自定义域名或 DNS 配置。

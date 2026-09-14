@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/postcss';
 
 const project = fileURLToPath(new URL('.', import.meta.url));
 export default defineConfig({
+  base: '/leo-notes/',
   root: `${project}github-pages`,
   publicDir: `${project}public`,
   resolve: { alias: { '@': project } },
