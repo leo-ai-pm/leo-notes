@@ -7,7 +7,7 @@ const directions = [
   {number:'02', title:'项目实践', text:'在动手的过程中，检验想法，积累经验。'},
   {number:'03', title:'阅读与思考', text:'给新问题留一点空间，也给自己留一点记录。'},
 ];
-export default function Home() {
+export function PersonalSite({ adminUrl = '/admin', analyticsEndpoint = '/api/analytics/click' }: {adminUrl?: string; analyticsEndpoint?: string} = {}) {
   return (
     <>
       <a href="#main" className="skip-link">跳到正文</a>
@@ -34,7 +34,7 @@ export default function Home() {
               <div className="section-head"><h1 id="writing-heading">文字与思考</h1><span className="article-count">{articles.length} 篇文章</span></div>
               {articles.length > 0 ? articles.map((article) => (
                 <article className="entry" key={article.title}>
-                  <ArticleLink articleId={article.id} href={articleDestination(article)}>
+                  <ArticleLink articleId={article.id} href={articleDestination(article)} analyticsEndpoint={analyticsEndpoint}>
                     <div className="entry-meta">{article.date && <time dateTime={article.date}>{article.date}</time>}<span>{article.category}</span></div>
                     <h2>{article.title}</h2><p>{article.excerpt}</p><span className="text-link">去公众号阅读 <ArrowUpRight size={16}/></span>
                   </ArticleLink>
@@ -76,7 +76,9 @@ export default function Home() {
           </aside>
         </div>
       </main>
-      <footer className="site-footer"><div className="wrap footer-row"><p>© {new Date().getFullYear()} Leo<span>思考与实践</span></p><div className="footer-links"><a href="/admin">管理后台</a><a href="#top">回到顶部 ↑</a></div></div></footer>
+      <footer className="site-footer"><div className="wrap footer-row"><p>© {new Date().getFullYear()} Leo<span>思考与实践</span></p><div className="footer-links"><a href={adminUrl}>管理后台</a><a href="#top">回到顶部 ↑</a></div></div></footer>
     </>
   );
 }
+
+export default function Home() { return <PersonalSite />; }

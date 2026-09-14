@@ -39,3 +39,5 @@ next-env.d.ts
 
 # local worker bindings
 .dev.vars*
+/dist-pages/
+/.pages-render/

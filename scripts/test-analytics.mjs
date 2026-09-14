@@ -14,6 +14,17 @@ const ownerPage=await (await get('/admin',{headers:ownerHeaders})).text();assert
 const articleId='J0BMxUEtUeHUQix-LyCZyg';const eventId=crypto.randomUUID();
 const post=(body,origin=base)=>get('/api/analytics/click',{method:'POST',headers:{'Content-Type':'application/json',Origin:origin},body:JSON.stringify(body)});
 assert.equal((await post({articleId,eventId},'https://example.com')).status,403);
+const pagesOrigin='https://leo-ai-pm.github.io';
+// Vite rejects external development origins before app routes. Verify CORS on
+// the production Worker served locally, without weakening the dev server.
+const corsBase=process.argv[3];
+if(corsBase){
+assert.ok(['localhost','127.0.0.1'].includes(new URL(corsBase).hostname));
+const preflight=await fetch(corsBase+'/api/analytics/click',{method:'OPTIONS',headers:{Origin:pagesOrigin,'Access-Control-Request-Method':'POST','Access-Control-Request-Headers':'content-type'}});
+assert.equal(preflight.status,204);assert.equal(preflight.headers.get('access-control-allow-origin'),pagesOrigin);
+const rejectedPreflight=await fetch(corsBase+'/api/analytics/click',{method:'OPTIONS',headers:{Origin:'https://example.com','Access-Control-Request-Method':'POST'}});assert.equal(rejectedPreflight.status,403);
+const acceptedPost=await fetch(corsBase+'/api/analytics/click',{method:'POST',headers:{Origin:pagesOrigin,'Content-Type':'application/json'},body:JSON.stringify({articleId,eventId})});assert.equal(acceptedPost.status,204);assert.equal(acceptedPost.headers.get('access-control-allow-origin'),pagesOrigin);
+}
 assert.equal((await post({articleId:'invalid-article',eventId})).status,400);
 assert.equal((await post({articleId,eventId:'not-a-uuid'})).status,400);
 assert.equal((await post({articleId,eventId})).status,204);
@@ -22,4 +33,4 @@ const after=await (await get('/api/admin/stats',{headers:ownerHeaders})).json();
 const reloaded=await (await get('/api/admin/stats',{headers:ownerHeaders})).json();assert.equal(reloaded.totals.total,after.totals.total);
 const html=(await (await get('/')).text()).replace(/<script\b[^>]*>[\s\S]*?<\/script>/g,'');
 assert.equal((html.match(/class="article-link"/g)||[]).length,5);assert.ok(html.includes('dpy093'));assert.ok(html.includes('扫码关注公众号'));assert.ok(!html.includes('打开公众号'));assert.equal((html.match(/href="https:\/\/github.com\/leo-ai-pm"/g)||[]).length,2);
-console.log('PASS: anonymous denied; other account denied; owner allowed; cross-origin and malformed events rejected; repeated event counted once; persisted counts reload; five original article links; GitHub and WeChat changes.');
+console.log('PASS: private owner stats; GitHub Pages CORS allowed; unknown origins rejected; malformed events rejected; repeated event counted once; persisted counts reload; five original article links; GitHub and WeChat changes.');
