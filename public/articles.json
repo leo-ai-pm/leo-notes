@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "account": "Leo-AIpm",
+  "articles": [
+    {
+      "id": "wGan3YjOAuwAYyiv8p0muA",
+      "title": "被嘲成「重置公司」后，Codex立了个28天flag",
+      "excerpt": "10月5日凌晨，OpenAI的Codex负责人Tibo立了个flag，接下来28天，每天要么上线一个对大多数用户有用的改进，要么给大家把额度重置一次。而就在他发推半小时前，SpaceXAI的工程师刚发图嘲OpenAI是「重置公司」。",
+      "category": "公众号文章",
+      "date": "2026-10-06",
+      "wechatUrl": "https://mp.weixin.qq.com/s/wGan3YjOAuwAYyiv8p0muA"
+    },
+    {
+      "id": "xs3lDC2ePzLle4V4Jyyg0Q",
+      "title": "OpenAI安全负责人离职，说文化坏了",
+      "excerpt": "OpenAI安全系统团队的负责人之一戴维·罗宾逊离职，在《大西洋月刊》发文说公司文化坏了。他在OpenAI干了三年半，负责过12次大模型发布的安全报告。他觉得先发布、出了问题再修的做法，模型越强，出的事越大。",
+      "category": "公众号文章",
+      "date": "2026-10-04",
+      "wechatUrl": "https://mp.weixin.qq.com/s/xs3lDC2ePzLle4V4Jyyg0Q"
+    },
+    {
+      "id": "SXIa44IvCEZaITjy3_10Fg",
+      "title": "Cloudflare开源Clef，给Agent装了个分拣员",
+      "excerpt": "Cloudflare开源了决策模型Clef和Clef-flash，基于Qwen，Apache 2.0，最快39毫秒出结果。它不写长文，专给Agent做选择、分任务，官方说法是决策可以少找人掺和了。",
+      "category": "公众号文章",
+      "date": "2026-10-04",
+      "wechatUrl": "https://mp.weixin.qq.com/s/SXIa44IvCEZaITjy3_10Fg"
+    },
+    {
+      "id": "k6X7BP-oXheHv9zzlQM34g",
+      "title": "Gemini 4 Argon来了，跑分很猛，谷歌自己人却在吐槽",
+      "excerpt": "谷歌憋了7个多月的Gemini 4 Argon来了，100万token输出、多项跑分登顶，可彭博社说谷歌员工自己都在嘀咕它写代码不太行。跑分和好用之间，到底差了什么？",
+      "category": "公众号文章",
+      "date": "2026-10-02",
+      "wechatUrl": "https://mp.weixin.qq.com/s/k6X7BP-oXheHv9zzlQM34g"
+    },
+    {
+      "id": "J0BMxUEtUeHUQix-LyCZyg",
+      "title": "GPT-6能交差吗？我用碰爪试了一遍",
+      "excerpt": "从宠物交友的想法，到可以体验的「碰爪」Demo。记录需求补充、地图接入与测试修复，也写下真实多人使用前还要完成的工作。",
+      "category": "项目实践",
+      "date": "2026-09-06",
+      "wechatUrl": "https://mp.weixin.qq.com/s/J0BMxUEtUeHUQix-LyCZyg"
+    },
+    {
+      "id": "KaExO8TAWRiLWjL0yzyiYA",
+      "title": "我把 DeepSeek Harness 拆成了 81 页，最后写下这份白皮书",
+      "excerpt": "围绕一份 81 页的架构与扩展白皮书，梳理 DeepSeek Harness 的插件体系、请求流程与扩展方式，以及采用时需要考虑的边界。",
+      "category": "Agent 架构",
+      "date": "2026-09-02",
+      "wechatUrl": "https://mp.weixin.qq.com/s/KaExO8TAWRiLWjL0yzyiYA"
+    },
+    {
+      "id": "qRWh7RpGpbo8DcHqfuxBPA",
+      "title": "我回到故乡，却听不懂亲人的方言了，AI能帮上什么",
+      "excerpt": "从回乡时听不懂的方言、难以接续的聊天谈起，思考 AI 能否帮助离乡的人重新理解亲人、地方习俗与共同生活。",
+      "category": "故乡与 AI",
+      "date": "2026-08-30",
+      "wechatUrl": "https://mp.weixin.qq.com/s/qRWh7RpGpbo8DcHqfuxBPA"
+    },
+    {
+      "id": "OTvoAD6c3mNGW0dUIJkpRg",
+      "title": "星宇股份解约107名应届生，AI能提前做什么",
+      "excerpt": "从一场校招解约事件切入，讨论 AI 在求职信息整理、文件理解和咨询准备中的作用，以及产品需要守住的边界。",
+      "category": "AI 与就业",
+      "date": "2026-08-29",
+      "wechatUrl": "https://mp.weixin.qq.com/s/OTvoAD6c3mNGW0dUIJkpRg"
+    },
+    {
+      "id": "SIc1ULDG_mtPSqEq5Hv8OA",
+      "title": "当孙宇晨问 Claude Code，要不要给景甜五千万美元",
+      "excerpt": "从一则引发讨论的 AI 使用叙事出发，思考 AI 作为决策伙伴时的价值、迎合问题，以及人应当保留的判断与责任。",
+      "category": "AI 与决策",
+      "date": "2026-08-29",
+      "wechatUrl": "https://mp.weixin.qq.com/s/SIc1ULDG_mtPSqEq5Hv8OA"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import { getDb } from '@/db';
-import { articles } from '@/lib/content';
+import { getPublishedArticles } from '@/lib/article-catalog';
 
 export function chinaDay(now: number): string {
   return new Date(now + 8 * 60 * 60 * 1000).toISOString().slice(0, 10);
@@ -9,6 +9,7 @@ export async function recordClick(eventId: string, articleId: string, now = Date
     .bind(eventId, articleId, now, chinaDay(now)).run();
 }
 export async function readStats(now = Date.now()) {
+  const articles = await getPublishedArticles();
   const today = chinaDay(now);
   const weekStart = chinaDay(now - 6 * 86400000);
   const monthStart = chinaDay(now - 29 * 86400000);
@@ -25,6 +26,13 @@ export async function readStats(now = Date.now()) {
     return { id: article.id, title: article.title, total: count?.total ?? 0, today: count?.today ?? 0,
       week: count?.week ?? 0, month: count?.month ?? 0, lastClick: count?.last_click ?? null };
   });
+  // Keep historical counts visible when a previously public article is removed.
+  for (const count of results) {
+    if (!articles.some(article => article.id === count.article_id)) rows.push({
+      id:count.article_id,title:'已下架文章',total:count.total,today:count.today,
+      week:count.week,month:count.month,lastClick:count.last_click,
+    });
+  }
   const totals = rows.reduce((sum, row) => ({today:sum.today+row.today,week:sum.week+row.week,month:sum.month+row.month,total:sum.total+row.total}), {today:0,week:0,month:0,total:0});
   return {rows, totals, updatedAt: new Date(now).toISOString(), timeZone:'Asia/Shanghai'};
 }

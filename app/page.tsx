@@ -1,13 +1,15 @@
 import { ArrowUpRight, ArrowRight, BookOpen, Compass, PenLine } from 'lucide-react';
 import { ArticleLink } from '@/components/article-link';
 import { articles, articleDestination, profile } from '@/lib/content';
+import { getPublishedArticles } from '@/lib/article-catalog';
 
 const directions = [
   {number:'01', title:'AI 产品学习', text:'从理解技术，到理解它能解决的问题。'},
   {number:'02', title:'项目实践', text:'在动手的过程中，检验想法，积累经验。'},
   {number:'03', title:'阅读与思考', text:'给新问题留一点空间，也给自己留一点记录。'},
 ];
-export function PersonalSite({ adminUrl = '/admin', analyticsEndpoint = '/api/analytics/click', basePath = '/' }: {adminUrl?: string; analyticsEndpoint?: string; basePath?: string} = {}) {
+export function PersonalSite({ adminUrl = '/admin', analyticsEndpoint = '/api/analytics/click', basePath = '/', articleList = articles }: {adminUrl?: string; analyticsEndpoint?: string; basePath?: string; articleList?: typeof articles} = {}) {
+  const articles = articleList;
   return (
     <>
       <a href="#main" className="skip-link">跳到正文</a>
@@ -81,4 +83,4 @@ export function PersonalSite({ adminUrl = '/admin', analyticsEndpoint = '/api/an
   );
 }
 
-export default function Home() { return <PersonalSite />; }
+export default async function Home() { return <PersonalSite articleList={await getPublishedArticles()} />; }

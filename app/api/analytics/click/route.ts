@@ -1,4 +1,4 @@
-import { articles } from '@/lib/content';
+import { getPublishedArticles } from '@/lib/article-catalog';
 import { recordClick } from '@/lib/analytics';
 export const dynamic = 'force-dynamic';
 const noCache = { 'Cache-Control': 'no-store', Vary: 'Origin' };
@@ -35,9 +35,10 @@ export async function POST(request: Request) {
   if (!body || typeof body !== 'object') return new Response(null,{status:400,headers});
   const {eventId,articleId} = body as Record<string,unknown>;
   if (typeof eventId !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(eventId)
-    || typeof articleId !== 'string' || !articles.some(article => article.id === articleId)) {
+    || typeof articleId !== 'string') {
     return new Response(null,{status:400,headers});
   }
+  if (!(await getPublishedArticles()).some(article => article.id === articleId)) return new Response(null,{status:400,headers});
   try {
     await recordClick(eventId, articleId);
     return new Response(null,{status:204,headers});
