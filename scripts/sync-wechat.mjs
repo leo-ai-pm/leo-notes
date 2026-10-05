@@ -20,7 +20,7 @@ try{
  const status=spawnSync('git',['status','--porcelain'],{encoding:'utf8'});
  if(status.status!==0||status.stdout.trim())throw new Error('工作区有未提交改动，请先处理，未开始同步。');
  run('git',['pull','--ff-only','origin','main']);
- run('ego-browser',['nodejs'],'globalThis.WECHAT_SYNC_PROJECT='+JSON.stringify(process.cwd())+';\n'+readFileSync('scripts/wechat-browser-export.mjs','utf8'));
+ run('ego-browser',['nodejs'],(process.argv[2]==='--space'&&/^\d+$/.test(process.argv[3]||'')?'globalThis.WECHAT_SYNC_SPACE_ID='+Number(process.argv[3])+';\n':'')+'globalThis.WECHAT_SYNC_PROJECT='+JSON.stringify(process.cwd())+';\n'+readFileSync('scripts/wechat-browser-export.mjs','utf8'));
  run('node',['scripts/import-wechat.mjs']);
  const diff=spawnSync('git',['diff','--quiet','--','public/articles.json']);
  if(diff.status===0){console.log('UNCHANGED');process.exit(0);}
