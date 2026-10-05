@@ -20,10 +20,13 @@ try{
  const status=spawnSync('git',['status','--porcelain'],{encoding:'utf8'});
  if(status.status!==0||status.stdout.trim())throw new Error('工作区有未提交改动，请先处理，未开始同步。');
  run('git',['pull','--ff-only','origin','main']);
+ const pending=run('git',['log','--format=%s','origin/main..HEAD']).trim().split('\n').filter(Boolean);
+ const pendingFiles=run('git',['diff','--name-only','origin/main...HEAD']).trim().split('\n').filter(Boolean);
+ if(pending.some(subject=>subject!=='Sync public WeChat articles')||pendingFiles.some(file=>file!=='public/articles.json'))throw new Error('存在其他未推送提交，停止自动推送。');
  run('ego-browser',['nodejs'],(process.argv[2]==='--space'&&/^\d+$/.test(process.argv[3]||'')?'globalThis.WECHAT_SYNC_SPACE_ID='+Number(process.argv[3])+';\n':'')+'globalThis.WECHAT_SYNC_PROJECT='+JSON.stringify(process.cwd())+';\n'+readFileSync('scripts/wechat-browser-export.mjs','utf8'));
  run('node',['scripts/import-wechat.mjs']);
  const diff=spawnSync('git',['diff','--quiet','--','public/articles.json']);
- if(diff.status===0){console.log('UNCHANGED');process.exit(0);}
+ if(diff.status===0){if(pending.length){run('git',['push','origin','main']);console.log('PUSHED: recovered pending article sync; verify deployment.');}else console.log('UNCHANGED');process.exit(0);}
  if(diff.status!==1)throw new Error('Unable to inspect catalog diff');
  run('node',['--test','scripts/test-wechat-sync.mjs']);
  run('npm',['run','build:pages']);
