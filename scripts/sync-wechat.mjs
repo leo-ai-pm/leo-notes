@@ -2,6 +2,13 @@ import {spawnSync} from 'node:child_process';
 import {readFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 process.chdir(fileURLToPath(new URL('../',import.meta.url)));
+// CLI tools do not automatically inherit macOS's browser proxy settings.
+if(process.platform==='darwin'&&!process.env.HTTPS_PROXY){
+ const settings=spawnSync('scutil',['--proxy'],{encoding:'utf8'}).stdout||'';
+ const host=settings.match(/HTTPSProxy : ([\w.-]+)/)?.[1];
+ const port=settings.match(/HTTPSPort : (\d+)/)?.[1];
+ if(/HTTPSEnable : 1/.test(settings)&&host&&port)process.env.HTTPS_PROXY=`http://${host}:${port}`;
+}
 function run(command,args,input){
  const r=spawnSync(command,args,{input,encoding:'utf8',maxBuffer:8_000_000,timeout:600_000});
  const output=(r.stdout||'')+(r.stderr||'');
