@@ -3,6 +3,14 @@
   "account": "Leo-AIpm",
   "articles": [
     {
+      "id": "9ByiuPPKVnk4YTSMHdowVQ",
+      "title": "DeepSeek原想融500亿，现在至少要融到800亿",
+      "excerpt": "据彭博今天的独家报道，DeepSeek新一轮融资至少800亿元人民币，原计划只融500亿，签了条款书的加起来可能接近1000亿。宁德时代和腾讯出钱最多，融完就重组，冲2027年初上市。",
+      "category": "公众号文章",
+      "date": "2026-10-06",
+      "wechatUrl": "https://mp.weixin.qq.com/s/9ByiuPPKVnk4YTSMHdowVQ"
+    },
+    {
       "id": "vwGz6Y4yuLLwjH1iPhk7ag",
       "title": "英伟达投的Reflection开源501B模型，还是追不上中国",
       "excerpt": "今天凌晨，英伟达投资的Reflection AI发布了第一个开源模型Beam，总参数501B、每次激活23B，权重这个月放出。可它自己的跑分表里写着，Kimi K3、DeepSeek V4.1 Flash这些中国开源模型还在前面。",
