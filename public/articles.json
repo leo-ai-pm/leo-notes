@@ -3,6 +3,14 @@
   "account": "Leo-AIpm",
   "articles": [
     {
+      "id": "vwGz6Y4yuLLwjH1iPhk7ag",
+      "title": "英伟达投的Reflection开源501B模型，还是追不上中国",
+      "excerpt": "今天凌晨，英伟达投资的Reflection AI发布了第一个开源模型Beam，总参数501B、每次激活23B，权重这个月放出。可它自己的跑分表里写着，Kimi K3、DeepSeek V4.1 Flash这些中国开源模型还在前面。",
+      "category": "公众号文章",
+      "date": "2026-10-06",
+      "wechatUrl": "https://mp.weixin.qq.com/s/vwGz6Y4yuLLwjH1iPhk7ag"
+    },
+    {
       "id": "wGan3YjOAuwAYyiv8p0muA",
       "title": "被嘲成「重置公司」后，Codex立了个28天flag",
       "excerpt": "10月5日凌晨，OpenAI的Codex负责人Tibo立了个flag，接下来28天，每天要么上线一个对大多数用户有用的改进，要么给大家把额度重置一次。而就在他发推半小时前，SpaceXAI的工程师刚发图嘲OpenAI是「重置公司」。",
