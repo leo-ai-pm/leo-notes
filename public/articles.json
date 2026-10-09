@@ -3,6 +3,14 @@
   "account": "Leo-AIpm",
   "articles": [
     {
+      "id": "BfdknHVrHvx_ajYTxqLpAA",
+      "title": "Anthropic 新政策首次禁止虐待模型",
+      "excerpt": "Anthropic发布2026年使用政策更新，11月12日生效。首次写明禁止对模型持续且无必要的虐待或残忍行为，主要执行方式是Claude结束对话。同步收紧欺骗活动、选举、武器、监控和高风险场景规则。",
+      "category": "公众号文章",
+      "date": "2026-10-09",
+      "wechatUrl": "https://mp.weixin.qq.com/s/BfdknHVrHvx_ajYTxqLpAA"
+    },
+    {
       "id": "1oF2fxxUbJgN-3rV6QBmAQ",
       "title": "纽约市议会 AI 听证会，四家大厂宣誓作证",
       "excerpt": "纽约市议会开了一场全体委员会听证，让OpenAI、Anthropic、谷歌、Meta宣誓作证。议长问最坏情况下AI闯大祸的概率有多大，四家都没给数字，问谁买了灾难险，也没人举手。三个离职研究员倒是报了数。",
