@@ -1,6 +1,8 @@
 # Leo · 思考与实践
 
-## 更新内容
+记录 AI 产品研究、项目实践与个人思考的文章主页。支持公众号文章同步、按发布时间浏览和原文跳转，并提供访问统计后台。
+
+## 内容维护
 
 修改 `lib/content.ts` 中的 `profile`。文章目录存放于 `public/articles.json`，由已登录公众号后台同步。仅添加真实文章，不填示例发布日期或虚构标题。每篇文章可以提供原始的 `https://mp.weixin.qq.com/...` 链接；没有单篇链接时回退到公众号二维码对应的入口。站内没有文章详情页。
 
@@ -21,7 +23,6 @@
 - GitHub Pages 只接收静态产物。点击记录保存在原 Sites 服务，管理入口指向 `https://leo-notes.ljhsmart1.chatgpt.site/admin`，后台代码和数据库不会被打包进前端。
 - 统计接口只允许原站同源与 `https://leo-ai-pm.github.io`；跨域提交不携带身份 Cookie，后台统计 API 不开放跨域访问。
 - 后端代码的修改仍需单独发布到原 Sites 服务；GitHub Actions 只更新 GitHub Pages 首页。
-
 
 ## 管理后台与统计
 
